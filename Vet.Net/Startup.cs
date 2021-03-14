@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 
 using Vet.Net.Data;
 using Microsoft.EntityFrameworkCore;
+using Vet.Net.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Vet.Net
 {
@@ -27,8 +29,13 @@ namespace Vet.Net
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(option =>
-                option.UseSqlServer(Configuration.GetConnectionString("My Connection")));
+                option.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
+
+
+            services.AddDefaultIdentity<ApplicationUser>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,12 +57,14 @@ namespace Vet.Net
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
