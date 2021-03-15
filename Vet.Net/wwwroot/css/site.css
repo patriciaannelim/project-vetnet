@@ -191,8 +191,6 @@ a {
         color: #121113;
     }
 
-label {
-}
 
 .control-label {
     font-size: 14px;
@@ -231,7 +229,7 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 12px;
     font-weight: 400;
     width: 100%;
-    height: 70px;
+    height: 30px; /*change the size of textboxes sa forms*/
     padding: 14px 18px;
     line-height: 1.42857143;
     border: 1px solid #dedbe3;
@@ -2354,3 +2352,133 @@ works properly when clicked or hovered */
 
 
 
+
+/*Register*/ 
+
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+.carousel-inner {
+    border-radius: 0 10px 10px 0;
+}
+
+.carousel-caption {
+    text-align: left;
+    left: 5%;
+}
+
+.login-sec {
+    padding: 50px 30px;
+    position: relative;
+}
+
+    .login-sec .copy-text {
+        position: absolute;
+        width: 80%;
+        bottom: 20px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+        .login-sec .copy-text i {
+           
+            color: #1861ac;
+        }
+
+        .login-sec .copy-text a {
+            color: #E36262;
+        }
+
+    .login-sec h2 {
+        margin-bottom: 30px;
+        font-weight: 800;
+        font-size: 30px;
+        color: #1861ac;
+    }
+
+        .login-sec h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #FEB58A;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+.btn-login {
+    background: #1861ac;
+    color: #fff;
+    font-weight: 600;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:50px;
+    padding-left:50px;
+}
+
+.banner-text {
+    width: 70%;
+    position: absolute;
+    bottom: 40px;
+    padding-left: 20px;
+}
+
+    .banner-text h2 {
+        color: #fff;
+        font-weight: 600;
+    }
+
+        .banner-text h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #FFF;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+        }
+
+    .banner-text p {
+        color: #fff;
+    }
+
+    /*Login*/
+
+
+
+.login-popup-heading h2 {
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-size: 30px;
+    color: #1861ac;
+}
+
+.new_reg_popup, .new_login_popup {
+    border-radius: 2px;
+    min-height: 332px;
+    width: 500px;
+    margin: 0px auto;
+}
+
+.login-popup-btn {
+    background: #258b47;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    height: 38px;
+    line-height: 28px;
+    margin: 20px auto 5px;
+    width: 150px;
+    -webkit-transition: all 700ms ease;
+    -moz-transition: all 700ms ease;
+    -ms-transition: all 700ms ease;
+    -o-transition: all 700ms ease;
+}
+
+a {
+    color: #1861ac;
+    font-size: 15px;
+}
