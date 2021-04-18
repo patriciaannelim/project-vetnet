@@ -213,6 +213,11 @@ textarea.form-control {
 
 .form-group {
     margin-bottom: 5px;
+    /*text-align:center;*/
+}
+
+.form-group-customized {
+    text-align:center;
 }
 
 select.form-control:not([size]):not([multiple]) {
@@ -777,7 +782,9 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
     display: none;
 }
 
-    .ui-datepicker .ui-datepicker-header {
+    .ui-datepicker .ui-datepicker-
+    
+    {
         position: relative;
         padding: .2em 0;
     }
@@ -2416,7 +2423,6 @@ works properly when clicked or hovered */
     padding-right:50px;
     padding-left:50px;
 }
-
 .banner-text {
     width: 70%;
     position: absolute;
@@ -2452,6 +2458,7 @@ works properly when clicked or hovered */
     font-weight: 800;
     font-size: 30px;
     color: #1861ac;
+    /*text-align:center;*/
 }
 
 .new_reg_popup, .new_login_popup {
@@ -2482,3 +2489,276 @@ a {
     color: #1861ac;
     font-size: 15px;
 }
+
+/*Layout -- NavBar*/
+
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+}
+
+.header {
+    text-align: center;
+    color: #0e3e6f;
+}
+
+.container-fluid bg-2 text-center {
+    background-image: #;
+}
+
+.about us-text {
+    background-color: white;
+}
+
+.homepage-header {
+    margin-top:5px;
+    font-weight: 800;
+    font-size: 50px;
+    color: #0e3e6f;
+}
+
+.homepage-header h4 {
+    margin-top: 0px;
+    font-weight: 300;
+    font-size: 50px;
+    color: #0e3e6f;
+
+}
+
+
+
+/*Homepage*/
+.home-main {
+    background: #5812c5;
+    color: #fff;
+    padding: 13%;
+    text-align: center;
+}
+
+.aboutus-bg {
+    background: #0e3e6f;
+    text-align: justify;
+    position: relative;
+    height: 600px;
+    padding: 50px 0px 50px 2px;
+}
+
+
+
+
+.aboutus-img {
+  
+    position: absolute;
+    object-fit: cover;
+
+}
+.about-us-text {
+    padding: 50px 50px 50px 50px; /*top right bottom left*/
+    color:#e4e4e4;
+}
+
+.inside-aboutus-text{
+    background:#e4e4e4;
+    color: #0e3e6f
+}
+
+.blinker {
+    animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.bg-programs {
+    background:#efefef;
+}
+
+/*Programs Offered -- left (image) right (text)*/
+.content1-left-img {
+    padding:0px;
+}
+
+.content1-right-text {
+    padding: 50px 0px 50px 2px; /*top right bottom left*/
+    /*background: #efefef;*/
+}
+
+    .content1-right-text h3 {
+        font-weight: bold;
+        font-size: 20px;
+        color: #0e3e6f;
+    }
+    .content1-right-text p {
+        padding: 5%;
+        text-align:justify;
+        font-size: 15px;
+        color: #121113;
+    }
+
+/*Programs Offered -- left (text) right (image)*/
+.content1-left-text {
+    padding: 50px 0px 50px 2px; /*top right bottom left*/
+    /*background: #e4e4e4;*/
+}
+    .content1-left-text h3 {
+        font-weight: bold;
+        font-size: 20px;
+        color: #0e3e6f;
+        text-align:center;
+    }
+    .content1-left-text p {
+        padding: 5%;
+        text-align: justify;
+        font-size: 15px;
+        color: #121113;
+    }
+
+.content1-right-img {
+    padding: 0px;
+    object-fit: contain;
+}
+
+
+
+.homepage-subheading {
+    margin-top: 5px;
+    margin-bottom: 13px;
+    font-weight:bold;
+    font-size: 30px;
+    color: #0e3e6f;
+}
+
+    /*image fit inside container*/
+.content1-left-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+}
+
+.content1-right-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+    /*button for programs offered*/
+.btn-programs {
+    background: #1861ac;
+    color: #fff;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.centered-programs {
+    position: absolute;
+    margin-top: 120px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+/*Put Picture above the picture*/
+.container-header {
+    position: relative;
+    text-align: center;
+    color: white;
+    width:100%
+
+}
+
+.container-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    color:white;
+    font-size: 55px;
+}
+
+.centered {
+    position: absolute;
+    margin-top: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/*footer*/
+/*.footer {
+    position: absolute;
+    padding:1%;
+    width: 100%;
+    background-color: #d7d7d7;
+    color: #0e3e6f;
+   font-weight:400;
+    text-align: center;
+}*/
+
+
+.context-dark, .bg-gray-dark, .bg-primary {
+    color: #0e3e6f;
+    padding: 20px 2px 0px 2px; /*top right bottom left*/
+}
+
+.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+    color: #0e3e6f;
+}
+
+.nav-list li {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+    .nav-list li a:hover:before {
+        margin-left: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.nav-list li a:before {
+    content: "\f14f";
+    font: 400 21px/1 "Material Design Icons";
+    color:aqua;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: -28px;
+    margin-right: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .22s ease;
+}
+
+.col-md-4 {
+    padding:0px;
+}
+
+
+
+
+
+

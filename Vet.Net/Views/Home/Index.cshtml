@@ -1,3 +1,97 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<br />
+<br />
+
+<div class="container-header">
+    <img src="~/css/images/homepage-bg.jpg" />
+    <h2 class="centered-text">Welcome to Vet Net</h2>
+    <button class="btn btn-login centered"><a href="Views/Home/Index.cshtml#aboutus">View Profile</a></button>
+</div>
+<br/>
+
+<div id="aboutus" class="container-header">
+
+    <div class="aboutus-bg">
+        <img src="~/css/images/vet.net_home(mid).JPG" style="float:left; width:630px;height:540px;padding: 50px 50px 50px 50px;" />
+        <h3 class="text-center" style="padding: 50px 50px 10px 100px;">ABOUT US</h3>
+        <p  style="padding: 50px 50px 50px 50px;">
+            Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
+            Quickly prototype your ideas or build your entire app with our Sass variables and mixins,
+            responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
+        </p>
+    </div>
+    </div>
+  
+<br />
+<br />
+<br />
+@* Programs Offered *@
+<strong><h1 class="text-center homepage-subheading">PROGRAMS OFFERED</h1></strong>
+
+@* Medication 1 *@
+<div class="row bg-programs">
+    <div class="col-md-6 content1-left-img">
+        <img src="~/css/images/vet.net_program(1).JPG" />
+    </div>
+    <div class="col-md-6 content1-right-text">
+        <h3>Medication</h3>
+        <p>
+            Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
+            Quickly prototype your ideas or build your entire app with our Sass variables and mixins,
+            responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
+        </p>
+        <button type="button" class="btn btn-programs centered-programs">Book Appointment</button>
+    </div>
+</div>
+
+
+<br />
+
+@* Medication 2 *@
+
+<div class="row bg-programs">
+    <div class="col-md-6 content1-left-text">
+        <h3 class="text-right">Medication</h3>
+        <p>
+            Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
+            Quickly prototype your ideas or build your entire app with our Sass variables and mixins,
+            responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
+        </p>
+        <button type="button" class="btn btn-programs centered-programs">Book Appointment</button>
+    </div>
+    <div class="col-md-6 content1-right-img">
+        <img src="~/css/images/vet.net_program(2).JPG" />
+
+    </div>
+</div>
+
+<br />
+
+@* Medication 3 *@
+<div class="row bg-programs">
+    <div class="col-md-6 content1-left-img">
+        <img src="~/css/images/vet.net_program(3).JPG" />
+    </div>
+    <div class="col-md-6 content1-right-text">
+        <h3>Medication</h3>
+        <p>
+            Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
+            Quickly prototype your ideas or build your entire app with our Sass variables and mixins,
+            responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
+        </p>
+        <button type="button" class="btn btn-programs centered-programs">Book Appointment</button>
+    </div>
+</div>
+
+<div style="line-height:3300%;">
+    <br>
+</div>
+

@@ -4,68 +4,81 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Vet.Net</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/55bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
-    <header>
+
+    <div class="header">
+        <h1 class="text-center homepage-header">VET . NET</h1>
+
+        <h4>
+            <a href="Index.cshtml#aboutus">About</a> &nbsp;&nbsp;
+            <a href="#">Programs Offered</a> &nbsp;&nbsp;
+            <a href="#">Contact Us</a> &nbsp;&nbsp;
+            <a href="#">FAQ</a> &nbsp;&nbsp;
+            <a href="#">User Profile</a> &nbsp;&nbsp;
+        </h4>
+    </div>
 
 
-        <div class="text-center">
-            <h1 class="display-4">Vet.Net</h1>
+    @*<div class="footer">
+            <p><span>News</span> and <span>announcements</span> for all things <span>Bootstrap</span>, including new <span>releases</span> and <span>Bootstrap Themes</span>.</p>
+        </div>*@
+    <div class="footer">
+        <footer class="section footer-classic context-dark bg-image" style="background: #bebebe;">
+            <div class="container">
+                <div class="row row-30">
+                    <div class="col-md-4 col-xl-5">
+                        <div class="pr-xl-4">
+                            <h4>OPENING HOURS</h4>
+                            <p><strong>Monday- Friday : </strong>9 AM - 8PM PHT</p>
+                            <p><strong>Saturday: </strong>10 AM - 2PM PHT</p>
+                            <p><strong>Sunday: </strong>CLOSED</p>
+                            <br />
+                            <p>This website is created for a project in ENTPROG.</p>
+                            <!-- Rights-->
+                            @*<p class="rights"><span>©  </span><span class="copyright-year">2021</span><span> </span><span>VET.NET</span><span>. </span><span>All Rights Reserved.</span></p>*@
+                            <strong><p>© 2021 VET.NET All Rights Reserved.</p></strong>
 
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>CONTACTS</h4>
+                            <p><strong>address:</strong></p>
+                            <p>798 South Park Avenue, Jaipur, Raj</p>
+                        <br/>
+                            <p><strong>email:</strong></p>
+                            <p><a href="mailto:#">vet.net@gmail.com</a></p>
 
-            <hr />
-            @*Html Navbar*@
-            <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">
-                
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                            @*<p><strong>phones:</strong></p>
+                            <p><a href="mailto:#">vet.net@gmail.com</a></p>*@
 
-                <div class="collapse navbar-collapse" id="navbarColor03">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">
-                                Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Programs Offered</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Booking</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User Profile</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Edit User Profile</a>
-                                <a class="dropdown-item" href="#">Pet Booklet</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
+                                
+                    </div>
+                    <div class="col-md-4 col-xl-3">
+                        <h4>LINKS</h4>
+
+                            <ul class="nav-list">
+                                <strong><li><a href="#">About</a></li></strong>
+                                <strong><li><a href="#">Programs Offered</a></li></strong>
+                                <strong><li><a href="#">Contact Us</a></li></strong>
+                                <strong><li><a href="#">FAQS</a></li></strong>
+                                <strong><li><a href="#">User Profile</a></li></strong>
+                            </ul>
+
+                    </div>
                 </div>
-            </nav>
-
-        </div>
-
+            </div>
+    </div>
 
 
 
-
-
-
-
-    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
