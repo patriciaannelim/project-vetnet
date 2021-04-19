@@ -15,6 +15,5 @@ namespace Vet.Net.Data
         {
 
         }
-        
     }
 }
