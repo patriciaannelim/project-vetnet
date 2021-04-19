@@ -34,7 +34,8 @@
 
                         <div class="form-group">
                             <label asp-for="Input.Phone"></label>
-                            <input asp-for="Input.Phone"  class="form-control" id="textarea" name="textarea" rows="4" />
+                            @*<input asp-for="Input.Phone"  class="form-control" id="textarea" name="textarea" rows="4" />*@
+                            <input asp-for="Input.Phone"  class="form-control" />
                            
                             <span asp-validation-for="Input.Phone" class="text-danger"></span>
 
@@ -42,92 +43,92 @@
 
                         <div class="form-group">
                             <label asp-for="Input.Address"></label>
-                            @*<input asp-for="Input.Address" class="form-control" />*@
-                            <textarea asp-for="Input.Address" class="form-control" id="textarea" name="textarea" rows="4"></textarea>
+                           <textarea rows="4" input asp-for="Input.Address" class="form-control" /></textarea>
+                             @*<textarea asp-for="Input.Address" class="form-control"name="textarea" rows="4"></textarea>*@
                             <span asp-validation-for="Input.Address" class="text-danger"></span>
                         </div>
 
-                        <div class="form-group">
-                            <label asp-for="Input.Password"></label>
-                            <input asp-for="Input.Password" class="form-control" />
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Input.ConfirmPassword"></label>
-                            <input asp-for="Input.ConfirmPassword" class="form-control" />
-                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                        </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.ConfirmPassword"></label>
+                                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
 
+                            <br />
+
+                                <button type="submit" class="btn btn-login" >Create New Account</button>
+
+
+                        </form>
+
+                    </div>
+                    <div class="col-md-8 banner-sec">
                         <br />
+                        <br />
+                        <br />
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel5-item active">
+                                    <img class="d-block img-fluid" src="~/css/images/register1.jpg" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
 
-                            <button type="submit" class="btn btn-login" >Create New Account</button>                        
-
-
-                    </form>
-                   
-                </div>
-                <div class="col-md-8 banner-sec">
-                    <br />
-                    <br />
-                    <br />
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel5-item active">
-                                <img class="d-block img-fluid" src="~/css/images/register1.jpg" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
-
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block img-fluid" src="~/css/images/register2.jpg" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-item">
+                                    <img class="d-block img-fluid" src="~/css/images/register2.jpg" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block img-fluid" src="~/css/images/register3.jpg" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                  
-                                </div>
-                            </div>
+                                <div class="carousel-item">
+                                    <img class="d-block img-fluid" src="~/css/images/register3.jpg" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
 
-                            <div>
-                                <br />
-                                <br />
-                                <h4> <strong>Terms and Conditions</strong></h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    Ut enim ad minim veniam, quis nostrud exercitation.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                                </p>
-
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input">
-                                        <small>I Agree to the Terms and Conditions</small>
-                                    </label>
-                                   
+                                    </div>
                                 </div>
+
+                                <div>
+                                    <br />
+                                    <br />
+                                    <h4> <strong>Terms and Conditions</strong></h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        Ut enim ad minim veniam, quis nostrud exercitation.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                                    </p>
+
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <small>I Agree to the Terms and Conditions</small>
+                                        </label>
+
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
+        </section>
+
+        <div style="line-height:3300%;">
+            <br>
         </div>
-    </section>
-
-    <div style="line-height:3300%;">
-        <br>
-    </div>
 
 
-    @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
-    }
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
