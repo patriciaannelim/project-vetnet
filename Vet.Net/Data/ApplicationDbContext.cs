@@ -15,5 +15,11 @@ namespace Vet.Net.Data
         {
 
         }
+
+        public DbSet<ReservationForm> Reservations { get; set; }
+        public DbSet<Medication> Medications { get; set; }
+        
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<PetBooklet> PetBooklets { get; set; }
     }
 }

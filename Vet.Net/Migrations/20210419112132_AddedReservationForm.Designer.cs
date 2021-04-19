@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vet.Net.Data;
 
 namespace Vet.Net.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210419112132_AddedReservationForm")]
+    partial class AddedReservationForm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,66 +233,12 @@ namespace Vet.Net.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Vet.Net.Models.Medication", b =>
-                {
-                    b.Property<int>("MedicationID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MedicationID");
-
-                    b.ToTable("Medications");
-                });
-
-            modelBuilder.Entity("Vet.Net.Models.PetBooklet", b =>
-                {
-                    b.Property<int>("PetID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Breed")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FoodSensitivities")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Medications")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PetName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Spayed")
-                        .HasColumnType("int");
-
-                    b.HasKey("PetID");
-
-                    b.ToTable("PetBooklets");
-                });
-
             modelBuilder.Entity("Vet.Net.Models.ReservationForm", b =>
                 {
                     b.Property<int>("ReservationID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Animal")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -303,9 +251,6 @@ namespace Vet.Net.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MedicationID")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -321,41 +266,7 @@ namespace Vet.Net.Migrations
 
                     b.HasKey("ReservationID");
 
-                    b.HasIndex("MedicationID");
-
                     b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("Vet.Net.Models.UserProfile", b =>
-                {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PetBookletPetID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PetID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserID");
-
-                    b.HasIndex("PetBookletPetID");
-
-                    b.ToTable("UserProfiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -407,24 +318,6 @@ namespace Vet.Net.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Vet.Net.Models.ReservationForm", b =>
-                {
-                    b.HasOne("Vet.Net.Models.Medication", "Medications")
-                        .WithMany()
-                        .HasForeignKey("MedicationID");
-
-                    b.Navigation("Medications");
-                });
-
-            modelBuilder.Entity("Vet.Net.Models.UserProfile", b =>
-                {
-                    b.HasOne("Vet.Net.Models.PetBooklet", "PetBooklet")
-                        .WithMany()
-                        .HasForeignKey("PetBookletPetID");
-
-                    b.Navigation("PetBooklet");
                 });
 #pragma warning restore 612, 618
         }

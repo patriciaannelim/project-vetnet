@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vet.Net.Data;
 
 namespace Vet.Net.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210419132149_AddedUserProfileandPetBooklet")]
+    partial class AddedUserProfileandPetBooklet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,21 +233,6 @@ namespace Vet.Net.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Vet.Net.Models.Medication", b =>
-                {
-                    b.Property<int>("MedicationID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MedicationID");
-
-                    b.ToTable("Medications");
-                });
-
             modelBuilder.Entity("Vet.Net.Models.PetBooklet", b =>
                 {
                     b.Property<int>("PetID")
@@ -289,9 +276,6 @@ namespace Vet.Net.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Animal")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
@@ -303,9 +287,6 @@ namespace Vet.Net.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MedicationID")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -320,8 +301,6 @@ namespace Vet.Net.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ReservationID");
-
-                    b.HasIndex("MedicationID");
 
                     b.ToTable("Reservations");
                 });
@@ -407,15 +386,6 @@ namespace Vet.Net.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Vet.Net.Models.ReservationForm", b =>
-                {
-                    b.HasOne("Vet.Net.Models.Medication", "Medications")
-                        .WithMany()
-                        .HasForeignKey("MedicationID");
-
-                    b.Navigation("Medications");
                 });
 
             modelBuilder.Entity("Vet.Net.Models.UserProfile", b =>
