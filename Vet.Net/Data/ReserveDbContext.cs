@@ -8,13 +8,14 @@ using Vet.Net.Models;
 
 namespace Vet.Net.Data
 {
-    public class ApplicationDbContext :IdentityDbContext<ApplicationUser>
+    public class ReserveDbContext : IdentityDbContext<ReserveUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-             : base(options)
+        public ReserveDbContext(DbContextOptions<ReserveDbContext> options)
+            : base(options)
         {
 
         }
-        
+        public DbSet<ReserveUser> Names { get; set; }
     }
+   
 }
