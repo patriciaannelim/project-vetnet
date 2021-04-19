@@ -2696,11 +2696,30 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/*FAQs*/
+.content2-left-text {
+    padding: 50px 0px 50px 2px;
+    background: #0e3e6f;
+}
 
+    .content2-left-text h5 {
+        font-weight: bold;
+        font-size: 20px;
+        color: #0e3e6f;
+        text-align: center;
+    }
 
+    .content2-left-text p {
+        padding: 5%;
+        text-align: justify;
+        font-size: 15px;
+        color: #121113;
+    }
+
+.faqs-bg {
+    background: #0e3e6f;
+}
 /*footer*/
-
-
 .context-dark, .bg-gray-dark, .bg-primary {
     color: #0e3e6f;
     padding: 20px 2px 0px 2px; /*top right bottom left*/
