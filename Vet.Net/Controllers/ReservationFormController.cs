@@ -82,9 +82,6 @@ namespace Vet.Net.Controllers
                     smtp.Send(mail);
                 }
             }
-
-
-
                     return RedirectToAction("Create", new { success = true });
             //return View("Create",new {success = true });
         }
