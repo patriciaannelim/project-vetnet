@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Vet.Net.Models
 
+
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -17,7 +18,7 @@
                 </form
             </li>*@
 
-        
+
         <h4>
             <a href="~/Home/Index/#aboutus">About</a>&nbsp;&nbsp;
             <a href="~/Home/Index/#programsoffered">Programs Offered</a>&nbsp;&nbsp;
@@ -27,7 +28,7 @@
 
         </h4>
 
-       
+
         //Last working navbar(slight)
         @*<a href="~/Home/Index/#aboutus">About</a>
             <a href="#programsoffered">Programs Offered</a>
@@ -54,15 +55,16 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
             </li>*@
-       
 
-<h4>
-    <a href="~/Home/Index/#aboutus">About</a> &nbsp;&nbsp;
-    <a href="~/Home/Index/#programsoffered">Programs Offered</a> &nbsp;&nbsp;
-    <a href="@Url.Action("Contact", "Home")">Contact Us</a>&nbsp;&nbsp;
-    <a href="~/Home/Index/#faqs">FAQ</a> &nbsp;&nbsp;
-    <a asp-area="Identity" asp-page="/Account/Login">Login</a> &nbsp;&nbsp;
-</h4>
+        
+
+        <h4>
+            <a href="~/Home/Index/#aboutus">About</a> &nbsp;&nbsp;
+            <a href="~/Home/Index/#programsoffered">Programs Offered</a> &nbsp;&nbsp;
+            <a href="@Url.Action("Contact", "Home")">Contact Us</a>&nbsp;&nbsp;
+            <a href="~/Home/Index/#faqs">FAQ</a> &nbsp;&nbsp;
+            <a asp-area="Identity" asp-page="/Account/Login">Login</a> &nbsp;&nbsp;
+        </h4>
 
     }
 </ul>

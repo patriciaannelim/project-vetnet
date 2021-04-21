@@ -20,11 +20,11 @@ namespace Vet.Net.Controllers
         {
             _context = context;
         }
-        //public IActionResult Index()
-        //{
-        //    var list = _context.Reservations.Include(p => p.Medications).ToList();
-        //    return View(list);
-        //}
+        public IActionResult Index()
+        {
+            var list = _context.Reservations.Include(p => p.Medications).ToList();
+            return View(list);
+        }
 
         public IActionResult Create(bool success = false)
         {
