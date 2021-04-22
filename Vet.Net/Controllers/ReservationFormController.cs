@@ -26,9 +26,9 @@ namespace Vet.Net.Controllers
             return View(list);
         }
 
-        public IActionResult Create(bool success = false)
+        public IActionResult Create(/*bool success = false*/)
         {
-            ViewBag.success = success;
+            //ViewBag.success = success;
             return View();
         }
 
@@ -60,13 +60,12 @@ namespace Vet.Net.Controllers
 
 
             using (MailMessage mail = new MailMessage("entprog.vet.net@gmail.com", record.Email))
-            {
-
-                mail.Subject = "Booking [to edit]";/*record.Subject;*/
+            {  
+                mail.Subject = "Vet.Net Reservation Receipt";/*record.Subject;*/
 
                 string message = "Hello, " + record.Name + "!<br/><br/>" +
-                "We have received you Reservation Form. Here are the details: <br/><br/>" +
-                "Contact Number: <strong>" + record.Phone + "</strong><br/>" +
+                "Your Reservation is Confirmed! Here are the details: <br/><br/>" +
+                "Date of Appointment: <strong>" + record.DatePicker + "</strong><br/>" +
                 "Pet Name: <strong>" + record.PetName + "</strong><br/>" +
                 "Type of Pet: <strong>" + record.Animal + "</strong><br/>" +
                 "Message: <br/><strong>" + record.Concerns + "</strong><br/><br/>" +
@@ -84,9 +83,11 @@ namespace Vet.Net.Controllers
                     smtp.Credentials = NetworkCred;
                     smtp.Port = 587;
                     smtp.Send(mail);
+                    ViewBag.Message = "This will be sent to your email! Please wait for our booking confirmation.";
                 }
             }
-                    return RedirectToAction("Create", new { success = true });
+            return View();
+            //return RedirectToAction("Create", new { success = true });
             //return View("Create",new {success = true });
         }
 

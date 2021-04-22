@@ -5,105 +5,187 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var reservationformlist = _context.Medications.ToList();
+    var medicationsList = _context.Medications.ToList();
 }
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-@if (ViewBag.success)
+@if (ViewBag.Message != null)
 {
-    <div class="alert alert-success" role="alert">
-       Successfully Booked! Please check your email!
-    </div>
+<br />
+<div class="alert alert-success text-center">
+    @ViewBag.Message
+</div>
 }
 
 <br />
+<br />
 <div class="container-header">
-    <img src="~/css/images/reservation-bg.jpg" />/" />
+    <img src="~/css/images/reservation-bg.jpg" />
 </div>
 
 <br />
 
-<div class="content">
-    <div class="container">
-        <div class="login-popup-heading">
-            <h2 class="text-center"> Reservation Form </h2>
-        </div>
+<div class="login-popup-heading">
+    <h2 class="text-center"> Reservation Form </h2>
+</div>
+
+<hr />
+
+
+<div class="row">
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb30">
+        <div class="tour-booking-form">
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                
+                <div class="row">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <h4 class="tour-form-title">Pet Details</h4>
+                    </div>
+
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="PetName" class="control-label"></label>
+                            <input asp-for="PetName" class="form-control" />
+                            <span asp-validation-for="PetName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @*<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="MedicationID" class="control-label"></label>
+                            <select asp-for="MedicationID" class="form-control" asp-items="ViewBag.MedicationID"></select>
+                        </div>*@
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Medications" class="control-label"></label>
+                            <select asp-for="MedicationID" class="form-control"
+                                    asp-items="@(new SelectList(medicationsList, "MedicationID","Name"))" required>
+                                <option value="">Select one...</option>
+                            </select>
+
+                            <span asp-validation-for="Medications" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Animal" class="control-label"></label>
+                            <input asp-for="Animal" class="form-control" />
+                            <span asp-validation-for="Animal" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="DatePicker" class="control-label"></label>
+                            <input asp-for="DatePicker" class="form-control" />
+                            <span asp-validation-for="DatePicker" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt30">
+                        <h4 class="tour-form-title">Owner's Details</h4>
+                    </div>
+
+
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Phone" class="control-label"></label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Address" class="control-label"></label>
+                            <textarea asp-for="Address" class="form-control"></textarea>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Type" class="control-label"></label>
+                            <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<PaymentMode>()"></select>
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="CustomerType" class="control-label"></label>
+                            <select asp-for="CustomerType" class="form-control" asp-items="Html.GetEnumSelectList<CustomerType>()"></select>
+                            <span asp-validation-for="CustomerType" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label asp-for="Concerns" class="control-label"></label>
+                            <textarea asp-for="Concerns" class="form-control"></textarea>
+                            <span asp-validation-for="Concerns" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label asp-for="DateAdded" class="control-label"></label>
+                            <input asp-for="DateAdded" class="form-control" />
+                            <span asp-validation-for="DateAdded" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateModified" class="control-label"></label>
+                            <input asp-for="DateModified" class="form-control" />
+                            <span asp-validation-for="DateModified" class="text-danger"></span>
+                        </div>*@
+
+                    <br />
+
+                    <div class="form-group-customized text-center">
+
+                        <button type="submit" class="btn btn-login">Submit</button>
+
+                    </div>
+                </div>
 
 
 
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="PetName" class="control-label"></label>
-                        <input asp-for="PetName" class="form-control" />
-                        <span asp-validation-for="PetName" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Medications" class="control-label"></label>
-                        <select asp-for="MedicationID" class="form-control"
-                                asp-items="@(new SelectList(reservationformlist, "MedicationID","Name"))" required>
-                            <option value="">Select one...</option>
-                        </select>
-
-                        <span asp-validation-for="Medications" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Animal" class="control-label"></label>
-                        <input asp-for="Animal" class="form-control" />
-                        <span asp-validation-for="Animal" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="DatePicker" class="control-label"></label>
-                        <input asp-for="DatePicker" class="form-control" />
-                        <span asp-validation-for="DatePicker" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Phone" class="control-label"></label>
-                        <input asp-for="Phone" class="form-control" />
-                        <span asp-validation-for="Phone" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Type" class="control-label"></label>
-                        <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<PaymentMode>()"></select>
-                        <span asp-validation-for="Type" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Concerns" class="control-label"></label>
-                        <input asp-for="Concerns" class="form-control" />
-                        <span asp-validation-for="Concerns" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
+
+
+<div style="line-height:3300%;">
+    <br>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Home</a>
 </div>
 
 @section Scripts {
