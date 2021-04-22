@@ -10,8 +10,8 @@ using Vet.Net.Data;
 namespace Vet.Net.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210419132149_AddedUserProfileandPetBooklet")]
-    partial class AddedUserProfileandPetBooklet
+    [Migration("20210422041906_AddReservationFormUserProfilePetBooklet")]
+    partial class AddReservationFormUserProfilePetBooklet
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -233,6 +233,21 @@ namespace Vet.Net.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Vet.Net.Models.Medication", b =>
+                {
+                    b.Property<int>("MedicationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MedicationID");
+
+                    b.ToTable("Medications");
+                });
+
             modelBuilder.Entity("Vet.Net.Models.PetBooklet", b =>
                 {
                     b.Property<int>("PetID")
@@ -255,7 +270,7 @@ namespace Vet.Net.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
-                    b.Property<string>("Medications")
+                    b.Property<string>("Meds")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PetName")
@@ -276,31 +291,54 @@ namespace Vet.Net.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("City")
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Animal")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Concerns")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateModified")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DatePicker")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("MedicationID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PetName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
                     b.HasKey("ReservationID");
+
+                    b.HasIndex("MedicationID");
 
                     b.ToTable("Reservations");
                 });
@@ -386,6 +424,15 @@ namespace Vet.Net.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Vet.Net.Models.ReservationForm", b =>
+                {
+                    b.HasOne("Vet.Net.Models.Medication", "Medications")
+                        .WithMany()
+                        .HasForeignKey("MedicationID");
+
+                    b.Navigation("Medications");
                 });
 
             modelBuilder.Entity("Vet.Net.Models.UserProfile", b =>

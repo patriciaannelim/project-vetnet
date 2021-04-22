@@ -42,12 +42,16 @@ namespace Vet.Net.Controllers
                 reservationForm.Medications = record.Medications;
                 reservationForm.MedicationID = record.MedicationID;
                 reservationForm.DatePicker = record.DatePicker;
-                reservationForm.Type = record.Type;
+
                 reservationForm.Name = record.Name;
                 reservationForm.Email = record.Email;
                 reservationForm.Phone = record.Phone;
-                reservationForm.City = record.City;
+                reservationForm.Address = record.Address;
+                reservationForm.Type = record.Type;
+                reservationForm.CustomerType = record.CustomerType;
                 reservationForm.Concerns = record.Concerns;
+
+                reservationForm.DateAdded = DateTime.Now;
 
             }
          
