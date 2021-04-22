@@ -2721,17 +2721,18 @@ body {
 }
 /*footer*/
 .context-dark, .bg-gray-dark, .bg-primary {
-    color: #0e3e6f;
+    color:white;
     padding: 20px 2px 0px 2px; /*top right bottom left*/
 }
 
 .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
-    color: #0e3e6f;
+    color: white;
 }
 
 .nav-list li {
     padding-top: 0px;
     padding-bottom: 0px;
+    color:white;
 }
 
     .nav-list li a:hover:before {
@@ -2744,13 +2745,14 @@ ul, ol {
     list-style: none;
     padding: 0;
     margin: 0;
+    color:white;
 }
 
 
 .nav-list li a:before {
     content: "\f14f";
     font: 400 21px/1 "Material Design Icons";
-    color:aqua;
+    color:white;
     display: inline-block;
     vertical-align: baseline;
     margin-left: -28px;
@@ -2762,6 +2764,15 @@ ul, ol {
 
 .col-md-4 {
     padding:0px;
+}
+
+.footer-link li{
+    color: white;
+    font-weight:400;
+}
+
+.nav-list li a {
+    color: white;
 }
 
 

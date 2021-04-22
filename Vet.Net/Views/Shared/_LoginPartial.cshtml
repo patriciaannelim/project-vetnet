@@ -6,10 +6,10 @@
 @inject UserManager<ApplicationUser> UserManager
 
 
-<ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        @*<li class="nav-item">
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @*<li class="nav-item">
                 <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li class="nav-item">
@@ -19,18 +19,41 @@
             </li>*@
 
 
-        <h4>
-            <a href="~/Home/Index/#aboutus">About</a>&nbsp;&nbsp;
-            <a href="~/Home/Index/#programsoffered">Programs Offered</a>&nbsp;&nbsp;
-            <a href="@Url.Action("Contact", "Home")">Contact Us</a>&nbsp;&nbsp;
-            <a asp-area="Identity" asp-page="/Account/Manage/Index">User Profile</a>&nbsp;&nbsp;
-            <a asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+            @*<h4>
+                <a href="~/Home/Index/#aboutus">About</a>&nbsp;&nbsp;
+                <a href="~/Home/Index/#programsoffered">Programs Offered</a>&nbsp;&nbsp;
+                <a href="@Url.Action("Contact", "Home")">Contact Us</a>&nbsp;&nbsp;
+                <a asp-area="Identity" asp-page="/Account/Manage/Index">User Profile</a>&nbsp;&nbsp;
+                <a asp-area="Identity" asp-page="/Account/Logout">Logout</a>
 
-        </h4>
+            </h4>*@
+
+            <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="~/Home/Index/#aboutus">About</a>&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Home/Index/#programsoffered">Programs Offered</a>&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Contact", "Home")">Contact Us</a>&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index">User Profile</a>&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item">
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
 
 
-        //Last working navbar(slight)
-        @*<a href="~/Home/Index/#aboutus">About</a>
+
+            //Last working navbar(slight)
+            @*<a href="~/Home/Index/#aboutus">About</a>
             <a href="#programsoffered">Programs Offered</a>
             <a href="@Url.Action("Contact", "Home")">Contact Us</a>
             <a asp-area="Identity" asp-page="/Account/Manage/Index">User Profile</a>
@@ -39,33 +62,33 @@
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>*@
-    }
-    else
-    {
+        }
+        else
+        {
 
-        @*<li class="nav-item"><a href="~/Home/Index/#aboutus">About</a></li>
+            @*<li class="nav-item"><a href="~/Home/Index/#aboutus">About</a></li>
             <li class="nav-item"> <a href="#programsoffered">Programs Offered</a></li>
             <li class="nav-item"> <a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
             <li class="nav-item">  <a asp-area="Identity" asp-page="/Account/Manage/Index">User Profile</a></li>
             <li class="nav-item">  <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button></li>*@
 
-        @*<li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
             </li>*@
 
-        
 
-        <h4>
-            <a href="~/Home/Index/#aboutus">About</a> &nbsp;&nbsp;
-            <a href="~/Home/Index/#programsoffered">Programs Offered</a> &nbsp;&nbsp;
-            <a href="@Url.Action("Contact", "Home")">Contact Us</a>&nbsp;&nbsp;
-            <a href="~/Home/Index/#faqs">FAQ</a> &nbsp;&nbsp;
-            <a asp-area="Identity" asp-page="/Account/Login">Login</a> &nbsp;&nbsp;
-        </h4>
 
-    }
-</ul>
+            <h4>
+                <a href="~/Home/Index/#aboutus">About</a> &nbsp;&nbsp;
+                <a href="~/Home/Index/#programsoffered">Programs Offered</a> &nbsp;&nbsp;
+                <a href="@Url.Action("Contact", "Home")">Contact Us</a>&nbsp;&nbsp;
+                <a href="~/Home/Index/#faqs">FAQ</a> &nbsp;&nbsp;
+                <a asp-area="Identity" asp-page="/Account/Login">Login</a> &nbsp;&nbsp;
+            </h4>
+
+        }
+    </ul>
 
