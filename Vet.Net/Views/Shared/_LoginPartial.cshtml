@@ -9,6 +9,7 @@
     <ul class="navbar-nav">
         @if (SignInManager.IsSignedIn(User))
         {
+            var currentUser = await UserManager.GetUserAsync(User);
             <nav class="navbar navbar-expand-lg" style="background:#1861ac;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -16,22 +17,31 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <a class="navbar-brand" href="~/Home/Index" style="color:white;">Home</a>
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="~/Home/Index/#aboutus" style="color:white;">About <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Home/Index/#programsoffered" style="color:white;">Programs Offered <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Contact", "Home")" style="color:white;">Contact Us <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Home/Index/#faqs" style="color:white;">FAQ<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Account/Manage/Index" style="color:white;">User Profile <span class="sr-only">(current)</span></a>
-                        </li>
+                        @if (currentUser.UserType == UserTypes.PetOwner)
+                        {
 
+                            <li class="nav-item active">
+                                <a class="nav-link" href="~/Home/Index/#aboutus" style="color:white;">About <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Home/Index/#programsoffered" style="color:white;">Programs Offered <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Contact", "Home")" style="color:white;">Contact Us <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Home/Index/#faqs" style="color:white;">FAQ<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" style="color:white;">User Profile <span class="sr-only">(current)</span></a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@(Url.Action("Index", "Profile"))" style="color:white;">Profiles <span class="sr-only">(current)</span></a>
+                            </li>
+                        }
                     </ul>
                     @*<form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -39,7 +49,7 @@
                     </form>*@
 
                     <form class="form-inline my-2 my-lg-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+                         @currentUser.FirstName @currentUser.LastName &nbsp; (@currentUser.Email) <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
                     </form>
                 </div>
             </nav>

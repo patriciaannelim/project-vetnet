@@ -39,7 +39,7 @@
         {
             <tr>
                 <td>
-                    <a href=@(Url.Action("Index","Booklet", new {id =item.ProfileID}))>@Html.DisplayFor(modelItem => item.Name)</a>
+                    <a href=@(Url.Action("Index","Booklet", new {id =item.Id}))>@item.FirstName @item.LastName</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
@@ -57,9 +57,8 @@
                     @Html.DisplayFor(modelItem => item.DateModified)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProfileID">Edit</a> |
-                    @*<a asp-action="Details" asp-route-id="@item.ProfileID">Details</a> |*@
-                    <a asp-action="Delete" asp-route-id="@item.ProfileID">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

@@ -8,7 +8,7 @@ namespace Vet.Net.Models
     public class BookletViewModel
     {
         public List<Booklet> Booklets { get; set; }
-        public List<Profile> Profiles { get; set; }
+        public List<ApplicationUser> Profiles { get; set; }
 
     }
 }

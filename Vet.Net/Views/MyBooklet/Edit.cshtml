@@ -2,20 +2,22 @@
 @inject Vet.Net.Data.ApplicationDbContext _context;
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var profilelist = _context.Users.Where(u => u.UserType == UserTypes.PetOwner).ToList();
+    var profilelist = _context.Users.ToList();
+
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
 <h4>Pet Booklet</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookletID" />
             <div class="form-group">
                 <label asp-for="PetName" class="control-label"></label>
                 <input asp-for="PetName" class="form-control" />
@@ -59,22 +61,26 @@
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
                 <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(profilelist,"Id","FirstName"))"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
+
+    <div style="line-height:3300%;">
+        <br>
+    </div>
 </div>
+
+
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
-<div style="line-height:3300%;">
-    <br>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}''
+}

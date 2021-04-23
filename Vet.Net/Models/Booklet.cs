@@ -54,8 +54,9 @@ namespace Vet.Net.Models
         [Display(Name = "Date Modified")]
         public DateTime? DateModified { get; set; }
 
-        public virtual Profile Profile { get; set; }
-        public int? ProfileID { get; set; }
+        public virtual ApplicationUser User { get; set; }
+
+        public string UserId { get; set; }
     }
 
     public enum Sex

@@ -5,7 +5,7 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var profilelist = _context.Users.Where(u => u.UserType == UserTypes.PetOwner).ToList();
+    var profilelist = _context.Users.ToList();
 }
 
 <h1>Create</h1>

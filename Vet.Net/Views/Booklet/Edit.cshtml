@@ -5,8 +5,7 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var profilelist = _context.Profiles.ToList();
-
+    var profilelist = _context.Users.Where(u => u.UserType == UserTypes.PetOwner).ToList();
 }
 
 <h1>Edit</h1>
@@ -57,15 +56,15 @@
                 <label asp-for="Meds" class="control-label"></label>
                 <input asp-for="Meds" class="form-control" />
                 <span asp-validation-for="Meds" class="text-danger"></span>
-
-                <div class="form-group">
-                    <label asp-for="ProfileID" class="control-label"></label>
-                    <select asp-for="ProfileID" class="form-control" asp-items="@(new SelectList(profilelist,"ProfileID","Name"))"></select>
-                    <span asp-validation-for="ProfileID" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(profilelist,"Id","FirstName"))"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
         </form>
     </div>
 

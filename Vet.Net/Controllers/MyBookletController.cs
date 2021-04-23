@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Vet.Net.Data;
@@ -9,22 +11,26 @@ using Vet.Net.Models;
 
 namespace Vet.Net.Controllers
 {
-    public class BookletController : Controller
+    [Authorize]
+    public class MyBookletController : Controller
     {
 
         private readonly ApplicationDbContext _context;
 
-        public BookletController(ApplicationDbContext context)
+        public MyBookletController(ApplicationDbContext context)
         {
             _context = context;
         }
-        public IActionResult Index(string id)
+        public IActionResult Index()
         {
-            var list = _context.Booklets.Include(p => p.User).Where(p => p.User.UserType == UserTypes.PetOwner).ToList();
-            if (id != null)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.PetOwner)
             {
-                list = _context.Booklets.Include(p => p.User).Where(p => p.UserId == id).ToList();
+                return RedirectToAction("Index", "Home");
             }
+            var list = _context.Booklets.Include(p => p.User).Where(p => p.UserId == userId).ToList();
+
             var bookletView = new BookletViewModel();
             bookletView.Booklets = list;
             return View(bookletView);
@@ -41,8 +47,8 @@ namespace Vet.Net.Controllers
         [HttpPost]
         public IActionResult Create(Booklet record)
         {
-
-            var selectedCategory = _context.Users.Where(p => p.Id == record.UserId).SingleOrDefault();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var selectedCategory = _context.Users.Where(p => p.Id == userId).SingleOrDefault();
 
             var booklet = new Booklet();
 
@@ -55,7 +61,7 @@ namespace Vet.Net.Controllers
             booklet.Description = record.Description;
             booklet.Meds = record.Meds;
             booklet.DateAdded = DateTime.Now;
-            booklet.UserId = record.UserId;
+            booklet.UserId = userId;
             booklet.User = selectedCategory;
 
             _context.Booklets.Add(booklet);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +20,9 @@ namespace Vet.Net.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? id)
+        public IActionResult Index()
         {
-            var list = _context.Profiles.ToList();
-            if (id != null)
-            {
-                list = _context.Profiles.Where(p => p.ProfileID == (int)id).ToList();
-                //list = _context.Booklets.Include(p => p.Profile).Where(p => p.Profile.ProfileID == (int)id).ToList();
-            }
+            var list = _context.Users.Where(u => u.UserType == UserTypes.PetOwner).ToList();
             var bookletView = new BookletViewModel();
             bookletView.Profiles = list;
             return View(bookletView);
@@ -39,30 +35,33 @@ namespace Vet.Net.Controllers
 
 
         [HttpPost]
-        public IActionResult Create(Profile record)
+        public IActionResult Create(ApplicationUser record)
         {
-            var profile = new Profile();
-
-            profile.Name = record.Name;
+            var profile = new ApplicationUser();
+            var passwordHasher = new PasswordHasher<ApplicationUser>();
+            profile.FirstName = record.FirstName;
+            profile.LastName = record.LastName;
             profile.Email = record.Email;
+            profile.PasswordHash = passwordHasher.HashPassword(profile, "temppassword");
             profile.Phone = record.Phone;
             profile.Address = record.Address;
             profile.DateAdded = DateTime.Now;
+            profile.UserType = UserTypes.PetOwner;
 
-            _context.Profiles.Add(profile);
+            _context.Users.Add(profile);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(string id)
         {
             if (id == null) //checks if value is NOT present then direct to Index Action
             {
                 return RedirectToAction("Index");
             }
 
-            var profile = _context.Profiles.Where(p => p.ProfileID == id).SingleOrDefault(); //supplier that gets the existing record from the suppliers table
+            var profile = _context.Users.Where(p => p.Id == id).SingleOrDefault(); //supplier that gets the existing record from the suppliers table
             if (id == null) //checks if value is NOT present then direct to Index Action
             {
                 return RedirectToAction("Index");
@@ -72,36 +71,37 @@ namespace Vet.Net.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int? id, Profile record) //using a nullable integer id and the Product object as parameters
+        public IActionResult Edit(string id, ApplicationUser record) //using a nullable integer id and the Product object as parameters
         {
 
-            var profile = _context.Profiles.Where(p => p.ProfileID == id).SingleOrDefault();  //get the existing record from the items table based on the parameter id value.
-            profile.Name = record.Name;
+            var profile = _context.Users.Where(p => p.Id == id).SingleOrDefault();  //get the existing record from the items table based on the parameter id value.
+            profile.FirstName = record.FirstName;
+            profile.LastName = record.LastName;
             profile.Email = record.Email;
             profile.Phone = record.Phone;
             profile.Address = record.Address;
             profile.DateModified = DateTime.Now;
 
-            _context.Profiles.Update(profile); //update the existing values
+            _context.Users.Update(profile); //update the existing values
             _context.SaveChanges(); //save the record from the database
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(string id)
         {
             if (id == null) //check if a valid value is not present, if condition is valid the view will redirect to index
             {
                 return RedirectToAction("Index");
             }
 
-            var profile = _context.Profiles.Where(p => p.ProfileID == id).SingleOrDefault(); //get the existing record from the items table based on the parameter id value.
+            var profile = _context.Users.Where(p => p.Id == id).SingleOrDefault(); //get the existing record from the items table based on the parameter id value.
             if (id == null) // product record is not present, redirect to Index
             {
                 return RedirectToAction("Index");
             }
 
-            _context.Profiles.Remove(profile); //remove the existing record from the database table
+            _context.Users.Remove(profile); //remove the existing record from the database table
             _context.SaveChanges();
 
             return RedirectToAction("Index"); // return view back to the index action
