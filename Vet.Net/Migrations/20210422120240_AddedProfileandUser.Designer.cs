@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vet.Net.Data;
 
 namespace Vet.Net.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210422120240_AddedProfileandUser")]
+    partial class AddedProfileandUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,10 +235,8 @@ namespace Vet.Net.Migrations
 
             modelBuilder.Entity("Vet.Net.Models.Booklet", b =>
                 {
-                    b.Property<int>("BookletID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("ProfileID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
@@ -268,15 +268,10 @@ namespace Vet.Net.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProfileID")
-                        .HasColumnType("int");
-
                     b.Property<int>("Sex")
                         .HasColumnType("int");
 
-                    b.HasKey("BookletID");
-
-                    b.HasIndex("ProfileID");
+                    b.HasKey("ProfileID");
 
                     b.ToTable("Booklets");
                 });
@@ -512,8 +507,10 @@ namespace Vet.Net.Migrations
             modelBuilder.Entity("Vet.Net.Models.Booklet", b =>
                 {
                     b.HasOne("Vet.Net.Models.Profile", "Profile")
-                        .WithMany("Booklets")
-                        .HasForeignKey("ProfileID");
+                        .WithOne("Booklet")
+                        .HasForeignKey("Vet.Net.Models.Booklet", "ProfileID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Profile");
                 });
@@ -538,7 +535,8 @@ namespace Vet.Net.Migrations
 
             modelBuilder.Entity("Vet.Net.Models.Profile", b =>
                 {
-                    b.Navigation("Booklets");
+                    b.Navigation("Booklet")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

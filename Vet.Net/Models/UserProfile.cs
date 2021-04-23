@@ -6,10 +6,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Vet.Net.Models
 {
-    public class UserProfile
+    public class UserProfile //not yet migrated to database (updated one)
     {
         [Key]
+
+       
         public int UserID { get; set; }
+
+
+        [Required(ErrorMessage = "Required.")]
 
         public string Name { get; set; }
         public string Email { get; set; }

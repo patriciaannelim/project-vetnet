@@ -1,0 +1,72 @@
+﻿@model Vet.Net.Models.BookletViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List of User Profiles</h1>
+
+<p>
+    <a asp-action="Create">Create a new User Profiles</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                DateAdded
+            </th>
+            <th>
+               DateModified
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Profiles)
+        {
+            <tr>
+                <td>
+                    <a href=@(Url.Action("Index","Booklet", new {id =item.ProfileID}))>@Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateModified)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProfileID">Edit</a> |
+                    @*<a asp-action="Details" asp-route-id="@item.ProfileID">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.ProfileID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div style="line-height:3300%;">
+    <br>
+</div>

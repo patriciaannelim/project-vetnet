@@ -1,0 +1,103 @@
+﻿@model Vet.Net.Models.BookletViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List of Pet Booklets</h1>
+
+<p>
+    <a asp-action="Create">Create a new Pet Booklet</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Pet Name
+            </th>
+            <th>
+                Breed
+            </th>
+            <th>
+                Birthday
+            </th>
+            <th>
+                Sex
+            </th>
+            <th>
+                Neutered
+            </th>
+            <th>
+               FoodSensitivities
+            </th>
+            <th>
+               Description
+            </th>
+            <th>
+               Meds
+            </th>
+            <th>
+               DateAdded
+            </th>
+            <th>
+               DateModified
+            </th>
+            <th>
+                Profile
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Booklets) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Neutered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodSensitivities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Meds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
+            </td>
+            <td>
+                <a href=@(Url.Action("Index","Profile", new {id =item.ProfileID}))>
+                    @Html.DisplayFor(modelItem => item.Profile.Name)
+                </a>
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookletID">Edit</a> |
+                @*<a asp-action="Details" asp-route-id="@item.BookletID">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.BookletID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div style="line-height:3300%;">
+    <br>
+</div>
