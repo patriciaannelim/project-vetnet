@@ -40,6 +40,12 @@ namespace Vet.Net.Controllers
 
         public IActionResult Create()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.PetOwner)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -73,6 +79,14 @@ namespace Vet.Net.Controllers
 
         public IActionResult Edit(int? id)
         {
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.PetOwner)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (id == null) //checks if value is NOT present then direct to Index Action
             {
                 return RedirectToAction("Index");

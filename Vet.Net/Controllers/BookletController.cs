@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Vet.Net.Data;
@@ -9,6 +11,7 @@ using Vet.Net.Models;
 
 namespace Vet.Net.Controllers
 {
+    [Authorize]
     public class BookletController : Controller
     {
 
@@ -20,10 +23,18 @@ namespace Vet.Net.Controllers
         }
         public IActionResult Index(string id)
         {
+
             var list = _context.Booklets.Include(p => p.User).Where(p => p.User.UserType == UserTypes.PetOwner).ToList();
             if (id != null)
             {
                 list = _context.Booklets.Include(p => p.User).Where(p => p.UserId == id).ToList();
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.Admin)
+            {
+                return RedirectToAction("Index", "Home");
             }
             var bookletView = new BookletViewModel();
             bookletView.Booklets = list;
@@ -34,6 +45,13 @@ namespace Vet.Net.Controllers
 
         public IActionResult Create()
         {
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -43,7 +61,7 @@ namespace Vet.Net.Controllers
         {
 
             var selectedCategory = _context.Users.Where(p => p.Id == record.UserId).SingleOrDefault();
-
+           
             var booklet = new Booklet();
 
             booklet.PetName = record.PetName;
@@ -67,6 +85,12 @@ namespace Vet.Net.Controllers
 
         public IActionResult Edit(int? id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null) //checks if value is NOT present then direct to Index Action
             {
                 return RedirectToAction("Index");

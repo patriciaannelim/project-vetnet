@@ -17,11 +17,11 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <a class="navbar-brand" href="~/Home/Index" style="color:white;">Home</a>
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        @if (currentUser.UserType == UserTypes.PetOwner)
+                        @if (currentUser.UserType == UserTypes.PetOwner)//Client
                         {
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="~/Home/Index/#aboutus" style="color:white;">About <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="~/Home/Index/#aboutus" style="color:white;">About Us <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="~/Home/Index/#programsoffered" style="color:white;">Programs Offered <span class="sr-only">(current)</span></a>
@@ -30,27 +30,36 @@
                                 <a class="nav-link" href="@Url.Action("Contact", "Home")" style="color:white;">Contact Us <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="~/Home/Index/#faqs" style="color:white;">FAQ<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="~/Home/Index/#faqs" style="color:white;">FAQ's<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" style="color:white;">User Profile <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" style="color:white;">User Profiles <span class="sr-only">(current)</span></a>
+                            </li><li class="nav-item">
+                                <a class="nav-link"   href="@Url.Action("Index", "MyBooklet")" style="color:white;">Pet Booklets <span class="sr-only">(current)</span></a>
                             </li>
                         }
-                        else
+                        else//Admin
                         {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@(Url.Action("Index", "Booklet"))" style="color:white;">Booklets<span class="sr-only">(current)</span></a>
+                            </li>
+                             <li class="nav-item active">
+                                <a class="nav-link" href="@(Url.Action("Index", "ReservationForm"))" style="color:white;">Reservations<span class="sr-only">(current)</span></a>
+                            </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="@(Url.Action("Index", "Profile"))" style="color:white;">Profiles <span class="sr-only">(current)</span></a>
                             </li>
+                                 @*<form class="form-inline my-2 my-lg-0">
+                                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                 </form>*@
                         }
                     </ul>
-                    @*<form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>*@
+                   
 
-                    <form class="form-inline my-2 my-lg-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                         @currentUser.FirstName @currentUser.LastName &nbsp; (@currentUser.Email) <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
-                    </form>
+                <form class="form-inline my-2 my-lg-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    @currentUser.FirstName @currentUser.LastName &nbsp; (@currentUser.Email) &nbsp; <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+                </form>
                 </div>
             </nav>
 

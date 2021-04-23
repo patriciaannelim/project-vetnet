@@ -2,7 +2,7 @@
 @inject Vet.Net.Data.ApplicationDbContext _context;
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Booklet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var profilelist = _context.Users.Where(u => u.UserType == UserTypes.PetOwner).ToList();

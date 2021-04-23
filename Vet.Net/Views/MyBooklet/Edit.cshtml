@@ -2,7 +2,7 @@
 @inject Vet.Net.Data.ApplicationDbContext _context;
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Pet Booklet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var profilelist = _context.Users.ToList();
@@ -58,11 +58,11 @@
                 <input asp-for="Meds" class="form-control" />
                 <span asp-validation-for="Meds" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(profilelist,"Id","FirstName"))"></select>
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
+            @*<div class="form-group">
+            <label asp-for="UserId" class="control-label"></label>
+            <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(profilelist,"Id","FirstName"))"></select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -79,7 +79,9 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+<div style="line-height:3300%;">
+    <br>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

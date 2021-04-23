@@ -1,7 +1,7 @@
 ﻿@model Vet.Net.Models.BookletViewModel;
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Profiles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,6 +10,13 @@
 <p>
     <a asp-action="Create">Create a new User Profiles</a>
 </p>
+<div align="center">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -29,7 +36,7 @@
                 DateAdded
             </th>
             <th>
-               DateModified
+                DateModified
             </th>
             <th></th>
         </tr>
@@ -37,30 +44,30 @@
     <tbody>
         @foreach (var item in Model.Profiles)
         {
-            <tr>
-                <td>
-                    <a href=@(Url.Action("Index","Booklet", new {id =item.Id}))>@item.FirstName @item.LastName</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateAdded)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateModified)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <a href=@(Url.Action("Index","Booklet", new {id =item.Id}))>@item.FirstName @item.LastName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

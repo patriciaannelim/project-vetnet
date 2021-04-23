@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +13,7 @@ using Vet.Net.Models;
 
 namespace Vet.Net.Controllers
 {
-
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +25,12 @@ namespace Vet.Net.Controllers
         public IActionResult Index()
         {
             var list = _context.Users.Where(u => u.UserType == UserTypes.PetOwner).ToList();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var bookletView = new BookletViewModel();
             bookletView.Profiles = list;
             return View(bookletView);
@@ -30,6 +38,13 @@ namespace Vet.Net.Controllers
 
         public IActionResult Create()
         {
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -56,6 +71,14 @@ namespace Vet.Net.Controllers
 
         public IActionResult Edit(string id)
         {
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            if (user.UserType != UserTypes.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (id == null) //checks if value is NOT present then direct to Index Action
             {
                 return RedirectToAction("Index");

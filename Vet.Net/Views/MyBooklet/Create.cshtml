@@ -2,7 +2,7 @@
 @inject Vet.Net.Data.ApplicationDbContext _context;
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Pet Booklet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var profilelist = _context.Users.ToList();
@@ -56,10 +56,10 @@
                 <input asp-for="Meds" class="form-control" />
                 <span asp-validation-for="Meds" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
                 <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(profilelist,"Id","FirstName"))"></select>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
