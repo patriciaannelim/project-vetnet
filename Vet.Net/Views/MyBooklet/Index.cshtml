@@ -100,10 +100,10 @@
 
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.BookletID">Edit</a> |
+                    <a asp-action="Edit" asp-route-id="@item.BookletID">Edit</a> 
                     @*<a asp-action="Details" asp-route-id="@item.BookletID">Details</a> |*@
-                    <a asp-action="Delete" asp-route-id="@item.BookletID"
-                          onclick='return confirm("The record you have selected will be permanently deleted!");'>Delete</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.BookletID"
+                          onclick='return confirm("The record you have selected will be permanently deleted!");'>Delete</a>*@
                 </td>
             </tr>
         }
