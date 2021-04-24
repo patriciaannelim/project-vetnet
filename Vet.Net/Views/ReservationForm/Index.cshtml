@@ -18,12 +18,7 @@
 
 
 
-<div align="center">
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
+
 <br />
 
 
@@ -117,7 +112,8 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ReservationID">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ReservationID">Delete</a>
+                    <a asp-action="Delete" asp-route-id="@item.ReservationID"
+                          onclick='return confirm("The record you have selected will be permanently deleted!");'>Delete</a>
                 </td>
             </tr>
         }
