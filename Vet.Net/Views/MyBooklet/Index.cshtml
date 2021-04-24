@@ -5,11 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>My Booklets</h1>
+
+<br />
+<h1 class="homepage-subheading">My Booklets</h1>
 
 <p>
-    <a asp-action="Create">Create a new Pet Booklet</a>
+    <a asp-action="Create">
+        <button class="btn btn-login">
+            Create a new Pet Booklet
+        </button>
+    </a>
+
 </p>
+
+
 <div align="center">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -36,19 +45,19 @@
                 Neutered
             </th>
             <th>
-               FoodSensitivities
+                FoodSensitivities
             </th>
             <th>
-               Description
+                Description
             </th>
             <th>
-               Meds
+                Meds
             </th>
             <th>
-               DateAdded
+                DateAdded
             </th>
             <th>
-               DateModified
+                DateModified
             </th>
             <th>
                 Profile
@@ -57,51 +66,52 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Booklets) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PetName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Breed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Neutered)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FoodSensitivities)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Meds)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAdded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
-            </td>
-            <td>
-                <a href=@(Url.Action("Index","Profile", new {id =item.UserId}))>
-                    @item.User.FirstName @item.User.LastName
-                </a>
+        @foreach (var item in Model.Booklets)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Breed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Neutered)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodSensitivities)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Meds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateModified)
+                </td>
+                <td>
+                    <a href=@(Url.Action("Index","Profile", new {id =item.UserId}))>
+                        @item.User.FirstName @item.User.LastName
+                    </a>
 
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookletID">Edit</a> |
-                @*<a asp-action="Details" asp-route-id="@item.BookletID">Details</a> |*@
-                <a asp-action="Delete" asp-route-id="@item.BookletID">Delete</a>
-            </td>
-        </tr>
-}
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BookletID">Edit</a> |
+                    @*<a asp-action="Details" asp-route-id="@item.BookletID">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.BookletID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 

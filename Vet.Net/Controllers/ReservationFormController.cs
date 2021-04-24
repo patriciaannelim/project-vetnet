@@ -38,24 +38,13 @@ namespace Vet.Net.Controllers
             return View(list);
         }
 
-        public IActionResult Create(/*bool success = false*/)
+        public IActionResult Create()
         {
-            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
-            //if (user.UserType != UserTypes.PetOwner)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
-            //ViewBag.success = success;
+           
             return View();
         }
 
-        //[Authorize]
-        //public IActionResult AdminCreate()
-        //{
-
-        //    return View();
-        //}
+        
 
         [HttpPost]
         public IActionResult Create(ReservationForm record)

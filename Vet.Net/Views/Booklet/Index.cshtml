@@ -4,14 +4,19 @@
     ViewData["Title"] = "Booklets";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>List of Pet Booklets</h1>
+<br />
+<h1 class="homepage-subheading">List of Pet Booklets</h1>
 
 <p>
-    <a asp-action="Create">Create a new Pet Booklet</a>
+    <a asp-action="Create">
+        <button class="btn btn-login">
+            Create a new Pet Booklet
+        </button>
+    </a>
+   
 </p>
 
-<div align="center">
+<div align="right">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -98,7 +103,6 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.BookletID">Edit</a> |
-                @*<a asp-action="Details" asp-route-id="@item.BookletID">Details</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.BookletID">Delete</a>
             </td>
         </tr>

@@ -5,12 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>List of Reservations</h1>
 
-<p>
-    <a asp-action="Create">Create a New Reservation</a>
-</p>
-<div align="center" >
+<br />
+<h1 class="homepage-subheading">List of Reservations</h1>
+
+
+<a asp-action="Create">
+    <button class="btn btn-login">
+        Create a New Reservation
+    </button>
+</a>
+
+
+
+<div align="center">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -19,53 +27,54 @@
 <br />
 
 
-    <table class="table" align="center">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PetName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Medications)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Animal)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DatePicker)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Address)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Type)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CustomerType)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Concerns)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateAdded)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateModified)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model) {
+<table @*class="table" align="center"*@>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medications)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePicker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Concerns)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PetName)
@@ -108,13 +117,12 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ReservationID">Edit</a> |
-                    @*<a asp-action="Details" asp-route-id="@item.ReservationID">Details</a>*@ |
                     <a asp-action="Delete" asp-route-id="@item.ReservationID">Delete</a>
                 </td>
             </tr>
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>
 
 
 <div style="line-height:3300%;">

@@ -36,6 +36,7 @@ namespace Vet.Net.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             var bookletView = new BookletViewModel();
             bookletView.Booklets = list;
             return View(bookletView);

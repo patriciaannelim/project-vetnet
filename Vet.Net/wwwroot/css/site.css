@@ -2629,6 +2629,14 @@ body {
     color: #0e3e6f;
 }
 
+.homepage-subheading2 h1 {
+    margin-top: 5px;
+    margin-bottom: 13px;
+    font-weight: bold;
+    font-size: 20px;
+    color:#efbf25 ;
+}
+
     /*image fit inside container*/
 .content1-left-img img {
     width: 100%;
@@ -2773,6 +2781,13 @@ ul, ol {
 
 .nav-list li a {
     color: white;
+}
+
+.admin-header h1 {
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 30px;
+    color: #0e3e6f;
 }
 
 
